@@ -7,6 +7,10 @@
         <title>Men&uacute; Principal</title>
     </head>
     <body>
+        
+        <p>
+             Bienvenido <%=request.getSession().getAttribute("usuario") %> tipo <%=request.getSession().getAttribute("rol") %>
+        </p>
         <h1>Men&uacute; Principal</h1>
         
         <button> <a href="IngresarRequerimiento.jsp"> Ingresar Requerimiento</a></button> <br>

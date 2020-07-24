@@ -10,12 +10,12 @@
     <body>
         <h1>Autentificaci&oacute;n</h1>
         
-        <form action="" method="post">
+        <form action="validacion.jsp" method="post">
             
-            <label>Usuario</label> <input type="text" placeholder="Usuario" required> <br>
-            <label>Password</label> <input type="password" placeholder="Password" required> <br>
+            <label>Usuario</label> <input type="text" placeholder="Usuario" name="usuario" required> <br>
+            <label>Password</label> <input type="password" placeholder="Password" name="clave" required> <br>
             <input type="checkbox"><label>Recordar</label> <br>
-            <input type="submit" value="Ingresar"> 
+            <input type="submit" value="Ingresar clave"> 
             
         </form>
 
