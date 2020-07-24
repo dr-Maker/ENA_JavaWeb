@@ -8,6 +8,26 @@
 <%@page import="java.util.List"%>
 <%@page import="modelos.dao.RequerimientoDao"%>
 <%
+    
+    // Si intenta ingresar sin log
+    if(request.getSession().getAttribute("web") == null)
+    {
+        response.sendRedirect("index.jsp");
+    }
+    else
+    {
+        // Si al haber entrado y estuvo exitoso pero cerro Sesión
+        String s = (String)request.getSession().getAttribute("web");
+        
+        
+        if(!s.equals("Ok"))
+        {
+            response.sendRedirect("index.jsp");
+        }
+    }
+    
+%>
+<%
     RequerimientoDao dao = new RequerimientoDao();
   
        

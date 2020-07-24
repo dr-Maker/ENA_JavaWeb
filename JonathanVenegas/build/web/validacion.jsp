@@ -17,6 +17,7 @@
             
                 String User = request.getParameter("usuario");
                 String Pass = request.getParameter("clave");
+                String recordar = request.getParameter("recordar");
                 String Rol = "";
   
                 
@@ -32,14 +33,32 @@
                   request.getSession().setAttribute("web", "Ok");
                   request.getSession().setAttribute("usuario", User);
                   request.getSession().setAttribute("rol", Rol);
+                    if(recordar != null)
+                    {
+                    Cookie cookie_user = new Cookie("log.c_user", User);
+                    Cookie cookie_pass = new Cookie("log.pass", Pass);
+                    cookie_user.setMaxAge(2*24*60*60); // duracion de la cokie 2 semanas 
+                    cookie_pass.setMaxAge(2*24*60*60); 
+                    response.addCookie(cookie_user);
+                    response.addCookie(cookie_pass);
+                    }else
+                    {
+                    Cookie cookie_user = new Cookie("log.c_user", User);
+                    Cookie cookie_pass = new Cookie("log.pass", Pass);
+                    cookie_user.setMaxAge(0); // duracion de la cokie 2 semanas 
+                    cookie_pass.setMaxAge(0); 
+                    response.addCookie(cookie_user);
+                    response.addCookie(cookie_pass);
+                    }
                   
+                          
                   response.sendRedirect("menu.jsp");
-                  
-        
+
          %>   
                   
         
                 <h1> Puede Ingresar </h1>
+
         <%
                 }
                 else

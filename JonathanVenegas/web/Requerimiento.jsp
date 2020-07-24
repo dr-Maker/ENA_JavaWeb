@@ -1,17 +1,28 @@
+<%
+    
+    // Si intenta ingresar sin log
+    if(request.getSession().getAttribute("web") == null)
+    {
+        response.sendRedirect("index.jsp");
+    }
+    else
+    {
+        // Si al haber entrado y estuvo exitoso pero cerro Sesión
+        String s = (String)request.getSession().getAttribute("web");
+        
+        
+        if(!s.equals("Ok"))
+        {
+            response.sendRedirect("index.jsp");
+        }
+    }
+    
+%>
+
 <%@page import="modelos.vo.Requerimiento"%>
 <%@page import="modelos.dao.RequerimientoDao"%>
 <%
 
-    /*
-    public int id_requerimiento;
-    public int id_gerencia;
-    public int id_depto;
-    public int id_asignado;
-    public int id_empleado;
-    public int estado;
-    public String requerimiento;
-    public String fecha;
-    */
     
         int id_gerencia = Integer.parseInt(request.getParameter("gerencia")); 
         String gerencia = "";
