@@ -28,22 +28,40 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="Css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="Css/estilo.css" rel="stylesheet" type="text/css"/>
         <title>Autentificaci&oacute;n</title>
     </head>
-    <body>
-        <h1>Autentificaci&oacute;n</h1>
+    <body>  
+        <div class="card card-header" >
+            <h1 class="titulo">Autentificaci&oacute;n</h1>
+        </div>
         
-        <form name="formLog" action="validacion.jsp" method="post">
+        <form class="container" id="formLog" name="formLog" action="validacion.jsp" method="post">
+            <br>
+
+            <div class="log">
+                
+                <label>Usuario  :</label> 
+
+                <input type="text" placeholder="Usuario" name="usuario" value="<%=User%>" required> 
+            </div>   
+            <br>
+            <div class="log">
+                <label>Password :</label> 
+                <input type="password" placeholder="Password" name="clave" value="<%=Pass%>" required> 
+            </div>
+            <div>
+            <br>
+            <label id="checkbox" ><input  name="recordar" type="checkbox" checked > Recordar</label> 
+            </div> 
+            <br>
+            <div >
+                <input class="btn btn-primary log_submit" type="submit" value="Ingresar clave"> 
+            </div>
             
-            <label>Usuario</label> 
-            <input type="text" placeholder="Usuario" name="usuario" value="<%=User%>" required> 
-            <br>
-            <label>Password</label> 
-            <input type="password" placeholder="Password" name="clave" value="<%=Pass%>" required> 
-            <br>
-            <input name="recordar" type="checkbox" checked><label>Recordar</label> 
-            <br>
-            <input type="submit" value="Ingresar clave"> 
+       
+
             
         </form>
 

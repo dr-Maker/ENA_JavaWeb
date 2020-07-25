@@ -23,19 +23,30 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="Css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="Css/estilo.css" rel="stylesheet" type="text/css"/>
         <title>Men&uacute; Principal</title>
     </head>
     <body>
+        <div class="setion_log">
+            <p>
+                 Bienvenido <%=request.getSession().getAttribute("usuario") %> tipo <%=request.getSession().getAttribute("rol") %>
+            </p>
+            <a class="btn btn-dark" href="CerrarSesion.jsp"> Cerrar sesi&oacute;n</a>
+           
+        </div>
+        <div class="card card-header" >
+            <h1 class="titulo">Men&uacute; Principal</h1>
+        </div>
         
-        <p>
-             Bienvenido <%=request.getSession().getAttribute("usuario") %> tipo <%=request.getSession().getAttribute("rol") %>
-             <button> <a href="CerrarSesion.jsp">Cerrar sesi&oacute;n</a></button>
-        </p>
-        <h1>Men&uacute; Principal</h1>
+        <div class="card card-header menu">
         
-        <button> <a href="IngresarRequerimiento.jsp"> Ingresar Requerimiento</a></button> <br>
-        <button> <a href="ConsultarRequerimientos.jsp"> Consultar Requerimientos</a></button><br>
-        <button> <a href="CerrarRequerimientos.jsp"> Cerrar Requerimiento</a></button>
-
+                <a class="btn btn-primary" href="IngresarRequerimiento.jsp"> Ingresar Requerimiento</a>
+               
+                <a class="btn btn-primary" href="ConsultarRequerimientos.jsp">Consultar Requerimientos</a>
+            
+                <a class="btn btn-primary" href="CerrarRequerimientos.jsp">Cerrar Requerimiento</a>
+           
+        </div>
     </body>
 </html>

@@ -65,117 +65,136 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="Css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="Css/estilo.css" rel="stylesheet" type="text/css"/>
         <script src="Js/main.js" type="text/javascript"></script>
         <title>Ingresar Requerimiento</title>
     </head>
     <body>
-        <h1>Ingresar Requerimiento</h1>      
         
-        <form id="form" action="Requerimiento.jsp" method="post">
-            <label>Gerencia:</label> 
-            <select name="gerencia" onchange="goSubmit()"> 
-                
-                <option value="0" >Seleccionar</option>
-            <%
-                    for(Gerencia item: listagerencias)
-                    {
-                        if(Gerencia == item.getId_gerencia())
-                        {
-                            Selec = "selected" ;
-                        }
-                        else
-                        {
-                            Selec = "";
-                        }
-            %>
-                <option <%= Selec %> value="<%= item.getId_gerencia() %>"> <%= item.getNombre() %> </option>
-            <%      
-                    }
-            %>
- 
-            </select> 
-            
-            <br>
-            
-            <label>Depto.:</label> 
-            
-            <select name="dpto" onchange="goSubmit()"> 
-                
+        <div class="card card-header">
+            <h1 class="titulo">Ingresar Requerimiento</h1> 
+        </div>
+        <div class="container">
           
-                    <option value="0">Seleccionar</option>
-            <%
-                    for(Depto item: listadeptos)
-                    {
-                        if(dpto == item.getId_depto())
-                        {
-                            Selec = "selected" ;
-                        }
-                        else
-                        {
-                            Selec = "";
-                        }
-            %>
-                    <option <%= Selec %> value="<%= item.getId_depto() %>" > <%= item.getDepto() %> </option>
-            <%
-                        
-                    }
+            <form id="form" action="Requerimiento.jsp" method="post">
+                 <div class="fm_ing_req">
+                    <label>Gerencia:</label> 
+                    <select name="gerencia" onchange="goSubmit()" required> 
 
-            %>
-          
-             </select> 
-            
-            <br>
-            
-            <label>Asignar a:</label> 
-            
-            <select name="asignado" onchange="goSubmit()"> 
-                <option value="0">Seleccionar</option>
-            <%
-                    for(Area item: listaareas)
-                    {
-                        if( asignado == item.getId_area() )
-                        {
-                            Selecion = "selected" ;
-                        }
-                        else
-                        {
-                            Selecion = "";
-                        }
-            %>
-                    <option <%= Selecion %> value="<%= item.getId_area() %>" > <%= item.getArea() %> </option>
-            <%
-                    }
-            %>
-            </select> 
-            <br>
-            <label>Encargado :</label> 
-            <select name="encargado" onchange="goSubmit()"> 
-                <option value="0">Seleccionar</option>
-                  <%
-                    for(Encargado item: listaEncargados)
-                    {
-                        if( encargado == item.getId())
-                        {
-                            Selecion = "selected" ;
-                        }
-                        else
-                        {
-                            Selecion = "";
-                        }
-            %>
-                    <option <%= Selecion %> value="<%= item.getId() %>" > <%= item.getNombre()+" "+item.getPaterno()  %> </option>
-            <%
-                    }
-            %>
+                        <option value="0" >Seleccionar</option>
+                    <%
+                            for(Gerencia item: listagerencias)
+                            {
+                                if(Gerencia == item.getId_gerencia())
+                                {
+                                    Selec = "selected" ;
+                                }
+                                else
+                                {
+                                    Selec = "";
+                                }
+                    %>
+                        <option <%= Selec %> value="<%= item.getId_gerencia() %>"> <%= item.getNombre() %> </option>
+                    <%      
+                            }
+                    %>
+
+                    </select> 
+                    </div>
+                 <div class="fm_ing_req">                  
+                    <label>Depto.:</label> 
+
+                    <select name="dpto" onchange="goSubmit()" required> 
+
+
+                            <option value="0">Seleccionar</option>
+                    <%
+                            for(Depto item: listadeptos)
+                            {
+                                if(dpto == item.getId_depto())
+                                {
+                                    Selec = "selected" ;
+                                }
+                                else
+                                {
+                                    Selec = "";
+                                }
+                    %>
+                            <option <%= Selec %> value="<%= item.getId_depto() %>" > <%= item.getDepto() %> </option>
+                    <%
+
+                            }
+
+                    %>
+
+                     </select>
+                </div>
+
                 
-            </select> <br>
-            <label>Requerimiento :</label> 
-            <textarea required name="requerimiento" placeholder="Ingrese descipción del requerimiento"></textarea><br>
-            <input type="submit" value="Guardar">
-            
-        </form>
+                <div class="fm_ing_req">   
+                    <label>Asignar a:</label> 
+
+                    <select name="asignado" onchange="goSubmit()" required> 
+                        <option value="0">Seleccionar</option>
+                    <%
+                            for(Area item: listaareas)
+                            {
+                                if( asignado == item.getId_area() )
+                                {
+                                    Selecion = "selected" ;
+                                }
+                                else
+                                {
+                                    Selecion = "";
+                                }
+                    %>
+                            <option <%= Selecion %> value="<%= item.getId_area() %>" > <%= item.getArea() %> </option>
+                    <%
+                            }
+                    %>
+                    </select>
+          
+                    
+                <div class="fm_ing_req">   
+                <label>Encargado :</label> 
+                    <select name="encargado" onchange="goSubmit()" required> 
+                        <option value="0">Seleccionar</option>
+                          <%
+                            for(Encargado item: listaEncargados)
+                            {
+                                if( encargado == item.getId())
+                                {
+                                    Selecion = "selected" ;
+                                }
+                                else
+                                {
+                                    Selecion = "";
+                                }
+                    %>
+                            <option <%= Selecion %> value="<%= item.getId() %>" > <%= item.getNombre()+" "+item.getPaterno()  %> </option>
+                    <%
+                            }
+                    %>
+
+                    </select>
+                </div>
+                
+                <div class="fm_ing_req">   
+                    <label>Requerimiento :</label> 
+                    <textarea required name="requerimiento" placeholder="Ingrese descipción del requerimiento" required></textarea>
+                    <div class="btn_ingresar">                       
+                        <input class="btn btn-primary" type="submit" value="Guardar">
+                    </div>
+                </div>
+            </form>
+        </div>
         
-        <br>
-        <button> <a href="menu.jsp">Volver a Men&uacute;</a></button>
+        
+         <div class="card card-header menu">
+        
+                <a class="btn btn-primary" href="menu.jsp">Volver a Men&uacute;</a>
+
+        </div>
     </body>
 </html>
