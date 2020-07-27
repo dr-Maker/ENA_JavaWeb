@@ -138,13 +138,13 @@ as
 	and
 	(tb_requerimientos.id_area = @in_area or @in_area = 0)
 	and
-	tb_gerencia.gerencia like '%'+@in_buscar+'%' or 
+	(tb_gerencia.gerencia like '%'+@in_buscar+'%' or 
 	tb_dpto.depto like '%'+@in_buscar+'%' or 
 	tb_area.area like '%'+@in_buscar+'%' or	
 	tb_encargados.nombre like '%'+@in_buscar+'%' or 
 	tb_encargados.apPaterno like '%'+@in_buscar+'%' or 
 	tb_encargados.apMaterno like '%'+@in_buscar+'%' or
-	requerimiento like '%'+@in_buscar+'%' and  tb_requerimientos.e_status = 1 
+	requerimiento like '%'+@in_buscar+'%' )
 go
 
 select * from tb_requerimientos
@@ -225,7 +225,7 @@ go
 create procedure sp_cerrar_requerimiento
 @in_id_requerimiento int
 as
-	update tb_requerimientos set e_status = 0 where id_requerimiento =   @in_id_requerimiento
+	update tb_requerimientos set e_status = 0 where id_requerimiento =  @in_id_requerimiento
 go
 
 /* Querys add--  */
