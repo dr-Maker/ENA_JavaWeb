@@ -75,13 +75,15 @@
            <link href="Css/bootstrap.css" rel="stylesheet" type="text/css"/>
            <link href="Css/estilo.css" rel="stylesheet" type="text/css"/>
            <script src="Js/main.js" type="text/javascript"></script>
+           <script src="Js/icons.js" type="text/javascript"></script>
         <title>Cerrar Requerimientos</title>
     </head>
     <body>
-        <div class="card card-header">
-            <h1 class="titulo">Cerrar Requerimientos</h1>
-        </div>
+        
         <div class="container">
+            <div class="card card-header">
+                <h1 class="titulo"><i class="fas fa-times-circle"></i> Cerrar Requerimientos</h1>
+            </div>
             <form id="formCerar" action="CerrarRequerimientos.jsp" >
 
                 <div class="fm_req">
@@ -153,10 +155,8 @@
                     <input name="buscar" type="text" value="" placeholder="Buscar">
                 </div>  
             </form>
-               
-        </div>
-             <div class="container">
-                <div class="card">   
+           
+                       <div class="card">   
                     <table class="table table-bordered table-striped">
                         <thead class="bg-primary text-white">
                             <tr>
@@ -164,8 +164,9 @@
                                 <th>Depto.</th> 
                                 <th>Asignado a </th> 
                                 <th>Reqierimiento</th> 
-                                <th></th> 
+                                <th>Cerrar</th> 
                             </tr>
+                        </thead>
                         <tbody>
                 <%
                     for(Requerimiento item: listaRequerimientos)
@@ -176,7 +177,7 @@
                              <td><%= item.depto %></td>
                              <td><%= item.area %></td>
                              <td><%= item.requerimiento %></td>
-                             <td hidden="<%= item.id_requerimiento %>" ><%= item.requerimiento %></td>
+                            
 
                              <td><a class="btn btn-danger" href="Cierre.jsp?code=<%=item.id_requerimiento %>">Cerrar</a></td>
                             </tr>
@@ -184,15 +185,15 @@
                     }
                 %>
                         </tbody>
-                    </thead>
 
                     </table>
                 </div>
-            </div>            
+                  
              <div class="card card-header menu">
         
                 <a class="btn btn-primary" href="menu.jsp">Volver a Men&uacute;</a>
 
             </div>
+        </div>
     </body>
 </html>

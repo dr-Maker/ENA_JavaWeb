@@ -30,14 +30,17 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="Css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <link href="Css/estilo.css" rel="stylesheet" type="text/css"/>
+        <script src="Js/icons.js" type="text/javascript"></script>
         <title>Autentificaci&oacute;n</title>
     </head>
     <body>  
-        <div class="card card-header" >
-            <h1 class="titulo">Autentificaci&oacute;n</h1>
-        </div>
+       
         
         <form class="container" id="formLog" name="formLog" action="validacion.jsp" method="post">
+            
+            <div class="card card-header" >
+                <h1 class="titulo">  <i class="fas fa-lock"></i> Autentificaci&oacute;n</h1>
+            </div>
             <br>
 
             <div class="log">
@@ -57,7 +60,7 @@
             </div> 
             <br>
             <div >
-                <input class="btn btn-primary log_submit" type="submit" value="Ingresar clave"> 
+                <input class="btn btn-primary log_submit" type="submit" value="Ingresar clave">
             </div>
             
        

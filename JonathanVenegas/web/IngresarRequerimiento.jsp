@@ -34,17 +34,31 @@
     int Gerencia = 0 ;
     String Selec = "";
     String Selecion = "";
+    String disabled  = "disabled";
     int dpto = 0;
     int asignado = 0;
     int encargado = 0;
     
             if(request.getParameter("gerencia")!= null)
-        {
-           Gerencia =  Integer.parseInt(request.getParameter("gerencia"));
-           dpto =  Integer.parseInt(request.getParameter("dpto"));
-           asignado =  Integer.parseInt(request.getParameter("asignado"));
-           encargado =  Integer.parseInt(request.getParameter("encargado")); 
-        }
+            {
+             Gerencia =  Integer.parseInt(request.getParameter("gerencia"));
+            }
+            
+            if(request.getParameter("dpto")!= null)
+            {
+                dpto =  Integer.parseInt(request.getParameter("dpto"));
+            }
+            
+            if(request.getParameter("asignado")!= null)
+            {
+                 asignado =  Integer.parseInt(request.getParameter("asignado"));
+            }
+             
+            if(request.getParameter("encargado")!= null)
+            {
+                encargado =  Integer.parseInt(request.getParameter("encargado")); 
+            }
+ 
     
     GerenciaDao daoGerencias =  new GerenciaDao();
     List<Gerencia> listagerencias = daoGerencias.Listar();
@@ -68,21 +82,23 @@
         <link href="Css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <link href="Css/estilo.css" rel="stylesheet" type="text/css"/>
         <script src="Js/main.js" type="text/javascript"></script>
+        <script src="Js/icons.js" type="text/javascript"></script>
         <title>Ingresar Requerimiento</title>
     </head>
     <body>
         
-        <div class="card card-header">
-            <h1 class="titulo">Ingresar Requerimiento</h1> 
-        </div>
+      
         <div class="container">
+             <div class="card card-header">
+                    <h1 class="titulo"><i class="fas fa-plus"></i> Ingresar Requerimiento</h1> 
+             </div>
           
             <form id="form" action="Requerimiento.jsp" method="post">
                  <div class="fm_ing_req">
                     <label>Gerencia:</label> 
                     <select name="gerencia" onchange="goSubmit()" required> 
 
-                        <option value="0" >Seleccionar</option>
+                        <option selected disabled value="0" >Seleccionar</option>
                     <%
                             for(Gerencia item: listagerencias)
                             {
@@ -108,7 +124,7 @@
                     <select name="dpto" onchange="goSubmit()" required> 
 
 
-                            <option value="0">Seleccionar</option>
+                            <option selected disabled value="0">Seleccionar</option>
                     <%
                             for(Depto item: listadeptos)
                             {
@@ -136,7 +152,7 @@
                     <label>Asignar a:</label> 
 
                     <select name="asignado" onchange="goSubmit()" required> 
-                        <option value="0">Seleccionar</option>
+                        <option selected disabled value="0">Seleccionar</option>
                     <%
                             for(Area item: listaareas)
                             {
@@ -159,7 +175,7 @@
                 <div class="fm_ing_req">   
                 <label>Encargado :</label> 
                     <select name="encargado" onchange="goSubmit()" required> 
-                        <option value="0">Seleccionar</option>
+                        <option selected disabled value="0">Seleccionar</option>
                           <%
                             for(Encargado item: listaEncargados)
                             {
@@ -182,19 +198,33 @@
                 
                 <div class="fm_ing_req">   
                     <label>Requerimiento :</label> 
-                    <textarea required name="requerimiento" placeholder="Ingrese descipción del requerimiento" required></textarea>
-                    <div class="btn_ingresar">                       
-                        <input class="btn btn-primary" type="submit" value="Guardar">
+                    <textarea required name="requerimiento" placeholder="Ingrese descipción del requerimiento" ></textarea>
+                    <div class="btn_ingresar">  
+                        <%
+                            if(Gerencia != 0 & dpto !=0 & asignado != 0 & encargado != 0)
+                            {
+                                disabled = "";
+                            }
+                            else
+                            {
+                                disabled  = "disabled";
+                            }
+                           
+    
+                        %>
+                        
+                        <input <%=disabled%> class="btn btn-primary" type="submit" value="Guardar">
                     </div>
                 </div>
             </form>
         </div>
         
         
-         <div class="card card-header menu">
+             <div class="card card-header menu">
         
                 <a class="btn btn-primary" href="menu.jsp">Volver a Men&uacute;</a>
 
+            </div>
         </div>
     </body>
 </html>

@@ -8,11 +8,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+                <link href="Css/bootstrap.css" rel="stylesheet" type="text/css"/>
+                 <link href="Css/estilo.css" rel="stylesheet" type="text/css"/>
+                  <script src="Js/icons.js" type="text/javascript"></script>
         <title>Valida</title>
     </head>
     <body>
-        
-        
+        <div class="container">
          <%
             
                 String User = request.getParameter("usuario");
@@ -57,7 +59,7 @@
          %>   
                   
         
-                <h1> Puede Ingresar </h1>
+         <h1 class="titulo"> Puede Ingresar </h1>
 
         <%
                 }
@@ -66,8 +68,11 @@
                      request.getSession().setAttribute("web", "Error");
 
         %>
+        <div class="card card-header">
+        <h1 class="titulo"><i class="fas fa-exclamation-triangle"></i> Error de Acceso </h1>
+        </div>
         
-                <h1> Error de Acceso </h1>
+        <p class="titulo">Usuario y/o clave incorrectos</p>
         <%
                 
                 }                
@@ -75,7 +80,9 @@
         %>
 
             
-        
-             <a href="index.jsp">Volver a iniciar</a>
+            <div class="card card-header menu">
+                 <a class="btn btn-primary" href="index.jsp">Volver a iniciar</a>
+            </div>
+        </div>
     </body>
 </html>

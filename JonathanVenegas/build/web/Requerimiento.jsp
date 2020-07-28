@@ -49,23 +49,34 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="Css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="Css/estilo.css" rel="stylesheet" type="text/css"/>
+         <script src="Js/icons.js" type="text/javascript"></script>
         <title>Requerimiento</title>
     </head>
     <body>
+        <div class="container">
  <%        
         if(realiado)
         {
  %>
-        <h2>Requerimiento realizado Correctamente.</h2>
+        <div class="card card-header">
+            <h2 class="titulo"><i class="fas fa-check-circle"></i> Requerimiento realizado Correctamente.</h2>
+        </div>
  <%
         }
         else
         {
   %>
-        <h2>No fue posible generar el registro del Requerimiento.</h2>
+        <div class="card card-header">
+             <h2 class="titulo"><i class="fas fa-exclamation-triangle"></i> Error</h2>
+             <p class="titulo">No fue posible generar el registro del Requerimiento.</p>
+         </div>
  <% 
         }
  %>
- 
-         <a href="menu.jsp">volver</a>
+            <div class="card card-header menu">
+                <a class="btn btn-primary" href="menu.jsp">volver</a>
+            </div>
+         </div>
     </body>

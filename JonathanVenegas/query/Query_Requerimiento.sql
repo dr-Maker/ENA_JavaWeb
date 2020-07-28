@@ -1,5 +1,5 @@
 --CREATE DATABASE Requerimiento;
-USE Requerimiento
+--USE Requerimiento
 
 /*Tablas*/
 
@@ -98,14 +98,6 @@ FOREIGN KEY (id_area) REFERENCES tb_area(id_area)
 )
 GO
 
-/*Select*/
-select * from tb_gerencia
-select * from tb_dpto
-select * from tb_area
-select * from  tb_encargados
-select * from tb_requerimientos
-
-
 
 /*Procedimientos almacenados*/
 
@@ -147,8 +139,7 @@ as
 	requerimiento like '%'+@in_buscar+'%' )
 go
 
-select * from tb_requerimientos
-exec sp_requerimientos 0, 0, 0, ''
+
 
 drop procedure sp_insert_requerimiento;
 go
@@ -228,52 +219,25 @@ as
 	update tb_requerimientos set e_status = 0 where id_requerimiento =  @in_id_requerimiento
 go
 
-/* Querys add--  */
-exec sp_valida 'd_maker','admin123';
-exec sp_lista_gerencia
-exec sp_lista_dpto 200
-exec sp_lista_dpto_asignar
-exec sp_lista_encargado 20
-exec sp_requerimientos 700, 110, 0
-exec sp_insert_requerimiento (5)
-sp_cerrar_requerimiento 
-
-
-/*Select -2*/
-select * from tb_usuario
-select * from tb_gerencia
-select * from tb_dpto
-select * from tb_area
-select * from  tb_encargados
-select * from tb_requerimientos
-
-
-
-/* Values agregadas --  */
+/* Valores de Prueba Agregados --  */
 /*Insert tb_rol*/
+
 INSERT INTO tb_rol (u_tipo) VALUES ('Administrador');
 /*Insert tb_usuario*/
 INSERT INTO tb_usuario (u_user, u_password, u_id_rol) VALUES ('d_maker','admin123',1);
+INSERT INTO tb_usuario (u_user, u_password, u_id_rol) VALUES ('rodrigo','ponce',1);
 
 /*Insert tb_gerencia*/
 INSERT INTO tb_gerencia(gerencia) VALUES ('Gerente de Cliente');
 INSERT INTO tb_gerencia(gerencia) VALUES ('Gerente de Ventas');
-INSERT INTO tb_gerencia(gerencia) VALUES ('Ventas');
-INSERT INTO tb_gerencia(gerencia) VALUES ('Operaciones');
-INSERT INTO tb_gerencia(gerencia) VALUES ('Sistemas');
+
+
+
 
 /*Insert tb_dpto*/
-INSERT INTO tb_dpto (depto, id_gerencia) VALUES ('Departamento de Cliente ', 700);
-INSERT INTO tb_dpto (depto, id_gerencia) VALUES ('Departamento de Ventas ', 800);
+INSERT INTO tb_dpto (depto, id_gerencia) VALUES ('Departamento de Cliente ', 100);
+INSERT INTO tb_dpto (depto, id_gerencia) VALUES ('Departamento de Ventas ', 200);
 
-INSERT INTO tb_dpto (depto, id_gerencia) VALUES ('Envío Nacional', 200);
-INSERT INTO tb_dpto (depto, id_gerencia) VALUES ('Envío Internacional', 200);
-INSERT INTO tb_dpto (depto, id_gerencia) VALUES ('Venta', 300);
-INSERT INTO tb_dpto (depto, id_gerencia) VALUES ('Marketing', 300);
-INSERT INTO tb_dpto (depto, id_gerencia) VALUES ('Publicidad', 300);
-INSERT INTO tb_dpto (depto, id_gerencia) VALUES ('Abastecimiento', 400);
-INSERT INTO tb_dpto (depto, id_gerencia) VALUES ('Control Calidad', 400);
-INSERT INTO tb_dpto (depto, id_gerencia) VALUES ('Producto Terminado', 400);
 
 /*Insert tb_area*/
 INSERT INTO tb_area (area) VALUES ('Abastecimiento');
@@ -291,96 +255,7 @@ INSERT INTO tb_encargados (nombre, apPaterno, apMaterno, correo, id_area) VALUES
 INSERT INTO tb_encargados (nombre, apPaterno, apMaterno, correo, id_area) VALUES ('Pablo','Mardones','Roa','pablomardones@correo.cl',20);
 INSERT INTO tb_encargados (nombre, apPaterno, apMaterno, correo, id_area) VALUES ('Felipe','Aguilera','Valenzuala','felipeaguilera@correo.cl',20);
 
-/*truncate table tb_requerimientos*/
-truncate table tb_gerencia
-truncate table tb_dpto
-delete  from tb_gerencia
-delete  from tb_dpto
-truncate table tb_encargados
-
-
-/*
-go
-create table planificacion(
-num int identity(1,1),
-numdpto int,
-numtaller int,
-numtutor int,
-fechainicio date,
-primary key(num),
-foreign key (numdpto) references tbl_dpto(num),
-foreign key (numtaller) references tbl_taller(num),
-foreign key (numtutor) references tbl_tutor(num));
-go
-
-*/
-
-
-/*
-GO
-DROP TABLE tb_Encargados;
-GO
-CREATE TABLE tb_Encargados
-(
-id INT PRIMARY KEY IDENTITY(1000,1),
-nombre VARCHAR(50) not null, 
-apPaterno VARCHAR(50) not null,
-apMaterno VARCHAR(50) not null,
-correo VARCHAR(50) not null unique,
-e_status INT not null DEFAULT 1,
-id_dpto int not null,
-FOREIGN KEY(id_dpto) REFERENCES tb_dpto(id_dpto)
-)
-GO
-
-*/
-
-
-/*
-GO
-DROP TABLE tb_dpto;
-GO
-CREATE TABLE tb_dpto
-(
-id_dpto INT PRIMARY KEY IDENTITY(10,10),
-depto VARCHAR(50) not null UNIQUE, 
-d_status INT not null DEFAULT 1,
-id_gerencia int not null,
-FOREIGN KEY(id_gerencia) REFERENCES tb_gerencia(id_gerencia)
-)
-GO
-
-GO
-DROP TABLE tb_subdpto;
-GO
-CREATE TABLE tb_subdpto
-(
-id_sub_dpto INT PRIMARY KEY IDENTITY(1000,10),
-subdpto VARCHAR(50) not null UNIQUE, 
-d_status INT not null DEFAULT 1,
-id_dpto int not null,
-FOREIGN KEY(id_dpto) REFERENCES tb_dpto(id_dpto)
-)
-GO
-
-drop procedure sp_lista_subdepto;
-go
-create procedure sp_lista_subdepto
-
-as
-	Select * from tb_subdpto 
-	where d_status = 1 
-go
-
-GO
-DROP TABLE tb_subdpto;
-GO
-CREATE TABLE tb_subdpto
-(
-id_sub_dpto INT PRIMARY KEY IDENTITY(1000,10),
-subdpto VARCHAR(50) not null UNIQUE, 
-d_status INT not null DEFAULT 1
-)
-GO
-
-*/
+select * from tb_encargados
+select * from tb_gerencia
+select * from tb_dpto
+select * from tb_area
