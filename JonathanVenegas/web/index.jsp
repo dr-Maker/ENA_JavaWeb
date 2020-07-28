@@ -56,7 +56,7 @@
             </div>
             <div>
             <br>
-            <label id="checkbox" ><input  name="recordar" type="checkbox" checked > Recordar</label> 
+            <label id="checkbox" ><input class="form-check-input" name="recordar" type="checkbox" checked > Recordar</label> 
             </div> 
             <br>
             <div >

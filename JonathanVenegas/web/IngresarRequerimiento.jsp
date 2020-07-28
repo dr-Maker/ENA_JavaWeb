@@ -30,7 +30,7 @@
 %>
 <%    
       
-    
+ 
     int Gerencia = 0 ;
     String Selec = "";
     String Selecion = "";
